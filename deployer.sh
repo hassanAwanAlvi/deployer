@@ -43,11 +43,11 @@ mkdir -p $repo_dir
 
 # run git init bare in /var/repo/
 cd $repo_dir
-git init bare
+git init --bare
 
-file="/hooks/post-receive"
+file="$var_repo/$repo_dir/hooks/post-receive"
 echo "#!/bin/sh" > $file
-echo "git --work-tree=$var_www/$var_www --git-dir=$var_repo/$repo_dir checkout -f main" > $file
+echo "git --work-tree=$var_www/$www_dir --git-dir=$var_repo/$repo_dir checkout -f main" >> $file
 cat $file
 
 
